@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import LevelCard from '../components/LevelCard'
 
-export default function Choose({ levels }) {
+export default function Choose({ levels, ...props }) {
   return (
     <div className="choose-container">
-      <section className="cards-section">{}</section>
+      <section className="cards-section">
+        {levels &&
+          levels.map((level) => (
+            <LevelCard key={level.id} level={level} {...props} />
+          ))}
+      </section>
       <section className="button-section">
-        <button>Leaderboard</button>
+        <button>Leaderboards</button>
       </section>
     </div>
   )

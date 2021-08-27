@@ -1,3 +1,6 @@
+.temporary {
+  width: 100%;
+}
 /*app styles*/
 .App {
   display: flex;
@@ -5,10 +8,18 @@
   min-height: 100%;
   height: 100%;
 }
+/*LogInAndOut comp styles*/
+.log-container {
+  margin-right: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 /*Header Comp styles*/
 .header-container {
   width: 100%;
   height: fit-content;
+  display: flex;
 }
 
 .header-container header {
