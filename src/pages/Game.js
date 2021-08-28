@@ -10,6 +10,11 @@ export default function Game({
   const image = useRef(null)
   const [imageIsClicked, setImageIsClicked] = useState(false)
   const [currentXY, setCurrentXY] = useState(null)
+  const [foundCharacters, setFoundCharacters] = useState({
+    wally: false,
+    wilma: false,
+    wizard: false,
+  })
 
   const handleClick = (e) => {
     setImageIsClicked((prev) => !prev)
@@ -38,8 +43,10 @@ export default function Game({
       currentXY.y > dataY - 20 &&
       currentXY.y < dataY + 20
 
-    console.log(currentXY.x + ',' + currentXY.y)
-    console.log(dataX + ',' + dataY)
+    if (result) {
+      setFoundCharacters({ ...foundCharacters, [character]: true })
+    }
+
     console.log(result)
 
     setImageIsClicked(false)
