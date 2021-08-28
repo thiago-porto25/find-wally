@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function LogInAndOut() {
-  const user = true
+  const user = false
   return (
     <div className="log-container">
-      {user && <button className="log-button in">Log in</button>}
-      {!user && (
+      {!user && <button className="log-button in">Log in</button>}
+      {user && (
         <>
           <button className="log-button out">Log out</button>
         </>

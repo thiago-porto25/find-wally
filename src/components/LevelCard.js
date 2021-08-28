@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function LevelCard({ level, ...props }) {
+export default function LevelCard({
+  level,
+  setSelectedLevel,
+  setIsGameRunning,
+  setIsChoosingLevel,
+}) {
   const handleClick = () => {
-    props.setIsGameRunning(true)
-    console.log(level)
+    setIsGameRunning(true)
+    setIsChoosingLevel(false)
+    setSelectedLevel(level)
   }
   return (
     <div className="card-container">
