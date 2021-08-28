@@ -6,5 +6,5 @@ export const findPercentage = (num, den) => {
 export const findCoordinate = (perc, den) => {
   const result = Math.round((perc * den) / 100)
 
-  return `${result}px`
+  return result
 }
