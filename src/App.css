@@ -1,21 +1,42 @@
-.temporary {
-  width: 100%;
-}
-/*app styles*/
+/*///////////////////////////app styles///////////////////////////*/
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100%;
   height: 100%;
 }
-/*LogInAndOut comp styles*/
+
+/*///////////////////////////LogInAndOut comp styles///////////////////////////*/
 .log-container {
   margin-right: 20px;
   margin-top: auto;
   margin-bottom: auto;
 }
 
-/*Header Comp styles*/
+.log-button {
+  cursor: pointer;
+  height: 3rem;
+  width: 9rem;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 200ms ease;
+}
+
+.out,
+.in:hover {
+  background-color: #cbcbcb;
+  border: 1px solid #ff4b4baa;
+  color: #ff4b4b;
+}
+
+.in,
+.out:hover {
+  background-color: #ff4b4b;
+  border: 1px solid #cbcbcbaa;
+  color: #cbcbcb;
+}
+
+/*///////////////////////////Header Comp styles///////////////////////////*/
 .header-container {
   width: 100%;
   height: fit-content;
@@ -25,10 +46,12 @@
 .header-container header {
   padding-top: 1.5rem;
   margin: auto;
+  padding-left: 9rem;
   width: fit-content;
   color: #ff4b4b;
   height: 100%;
   font-size: 40px;
+  text-shadow: 0px 0px 10px #000000aa;
   font-weight: bold;
 }
 
@@ -42,7 +65,7 @@
   height: 60px;
 }
 
-/*Footer comp styles*/
+/*///////////////////////////Footer comp styles///////////////////////////*/
 footer {
   margin-top: auto;
   margin-left: auto;
@@ -66,13 +89,176 @@ footer p a:hover {
   color: #ff4b4b;
 }
 
-/*LevelCard comp styles*/
+/*///////////////////////////LevelCard comp styles///////////////////////////*/
+.card-container {
+  width: 300px;
+  height: 350px;
+  background-color: #f73f3f;
+  border-radius: 10px;
+  border: 1.8px solid #cbcbcbaa;
+  box-shadow: 0px 0px 10px #000000aa;
+  transition: 200ms ease-in-out;
+}
 
-/*Choose page styles*/
+.card-container:hover {
+  background-color: #f83737;
+  box-shadow: 0px 0px 10px #000000;
+}
+
+.card-container img {
+  width: 90%;
+  margin: 5%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-container h3 {
+  pointer-events: none;
+  font-size: 30px;
+  margin: 0;
+  padding-left: 15px;
+}
+
+.card-container p {
+  pointer-events: none;
+  padding: 0 15px 0 15px;
+}
+
+.card-container button {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  background-color: #333333;
+  border: 1px solid #cbcbcbaa;
+  box-shadow: 0 0 5px #000000aa;
+  color: #cbcbcb;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 200ms ease;
+  width: 10rem;
+  height: 2.5rem;
+}
+
+.card-container button:hover {
+  background-color: #cbcbcb;
+  color: #333333;
+  border: 1px solid #333333aa;
+}
+
+/*///////////////////////////Choose page styles///////////////////////////*/
 .choose-container {
+  margin: auto;
+  max-width: 900px;
+  width: 85%;
+}
+
+.cards-section {
+  padding: 40px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.button-section {
+  padding: 30px 0 10px 0;
+  width: 100%;
+}
+
+.button-section button {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  background-color: #cbcbcb;
+  border: 1px solid #ff4b4baa;
+  width: 50%;
+  height: 3rem;
+  min-width: 15rem;
+  color: #ff4b4b;
+  font-size: 25px;
+  font-weight: bold;
+  transition: 200ms ease;
+}
+
+.button-section button:hover {
+  color: #cbcbcb;
+  background-color: #ff4b4b;
+  border: 1px solid #cbcbcbaa;
+}
+
+/*///////////////////////////Game page styles///////////////////////////*/
+.game-container {
+  padding-top: 20px;
+  margin: auto;
+}
+.game-container img {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+}
+.game-inner {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.selection-square {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ff4b4b;
+  background-color: transparent;
+  position: absolute;
+}
+.chars-list-container {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.chars-list-item {
+  color: #cbcbcb;
+  background-color: #333333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #ff4b4b;
+  pointer-events: all;
+  transition: 200ms ease-in-out;
+  cursor: pointer;
+}
+.chars-list-item:hover {
+  background-color: #ff4b4b;
+}
+.chars-list-item p {
+  pointer-events: none;
+  padding-left: 10px;
   margin: auto;
 }
 
-/*Game page styles*/
+/*///////////////////////////Leaderboads page styles////////////////////////////////*/
 
-/*Leaderboads page styles*/
+/*///////////////////////////Different Screen Sizes///////////////////////////*/
+@media (max-width: 750px) {
+  .header-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-container header {
+    padding-left: 0;
+  }
+
+  .log-container {
+    margin-right: 0;
+    padding-top: 20px;
+  }
+
+  .cards-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .choose-container {
+    width: 100%;
+  }
+}
