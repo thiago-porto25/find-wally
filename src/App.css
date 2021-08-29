@@ -163,135 +163,6 @@ footer p a:hover {
   border: 1px solid #333333aa;
 }
 
-/*///////////////////////////Choose page styles///////////////////////////*/
-.choose-container {
-  margin: auto;
-  max-width: 900px;
-  width: 85%;
-}
-
-.cards-section {
-  padding: 40px 0 0 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-}
-
-.button-section {
-  padding: 30px 0 10px 0;
-  width: 100%;
-}
-
-.button-section button {
-  display: block;
-  margin: auto;
-  cursor: pointer;
-  background-color: #cbcbcb;
-  border: 1px solid #ff4b4baa;
-  width: 50%;
-  height: 3rem;
-  min-width: 15rem;
-  color: #ff4b4b;
-  font-size: 25px;
-  font-weight: bold;
-  transition: 200ms ease;
-}
-
-.button-section button:hover {
-  color: #cbcbcb;
-  background-color: #ff4b4b;
-  border: 1px solid #cbcbcbaa;
-}
-
-/*///////////////////////////Game page styles///////////////////////////*/
-.game-container {
-  margin: auto;
-}
-.game-container img {
-  width: 100%;
-  object-fit: cover;
-  height: auto;
-}
-.game-inner {
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-}
-.selection-square {
-  width: 20px;
-  height: 20px;
-  border: 3px solid #ff4b4b;
-  background-color: transparent;
-  position: absolute;
-}
-.chars-list-container {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-}
-.chars-list-item {
-  color: #cbcbcb;
-  background-color: #333333;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: 1px solid #ff4b4b;
-  pointer-events: all;
-  transition: 200ms ease-in-out;
-  cursor: pointer;
-}
-.chars-list-item:hover {
-  background-color: #ff4b4b;
-}
-.chars-list-item p {
-  pointer-events: none;
-  padding-left: 10px;
-  margin: auto;
-}
-
-.found {
-  pointer-events: none;
-  background-color: #ff4b4b;
-  text-decoration: line-through;
-  color: #333333;
-}
-
-.time-and-found-num {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.timer {
-  text-shadow: 0px 0px 10px #000000aa;
-  font-family: 'Press Start 2P', sans-serif;
-  color: #ff4b4b;
-  font-size: 22px;
-  font-weight: bold;
-  width: 300px;
-}
-
-.found-number {
-  box-shadow: 0px 0px 10px #000000aa;
-  display: flex;
-  align-items: center;
-  border-radius: 50%;
-  background-color: #cbcbcb;
-  color: #f73f3f;
-  width: 3rem;
-  height: 3rem;
-  pointer-events: none;
-}
-
-.found-number p {
-  margin: auto;
-  margin-top: auto;
-  font-size: 25px;
-  font-weight: bold;
-  width: fit-content;
-  height: fit-content;
-  text-align: center;
-}
-
 /*///////////////////////////selection message comp styles////////////////////////////////*/
 .selection-message {
   pointer-events: none;
@@ -387,6 +258,135 @@ footer p a:hover {
   background-color: #f83737;
   border: 1px solid #cbcbcbaa;
   color: #cbcbcb;
+}
+
+/*///////////////////////////Choose page styles///////////////////////////*/
+.choose-container {
+  margin: auto;
+  max-width: 900px;
+  width: 85%;
+}
+
+.cards-section {
+  padding: 40px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.button-section {
+  padding: 30px 0 10px 0;
+  width: 100%;
+}
+
+.button-section button {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  background-color: #f83737;
+  border: 1px solid #cbcbcbaa;
+  width: 50%;
+  height: 3rem;
+  min-width: 15rem;
+  color: #cbcbcb;
+  font-size: 25px;
+  font-weight: bold;
+  transition: 300ms ease;
+}
+
+.button-section button:hover {
+  color: #f83737;
+  background-color: #cbcbcb;
+  border: 1px solid #f83737c5;
+}
+
+/*///////////////////////////Game page styles///////////////////////////*/
+.game-container {
+  margin: auto;
+}
+.game-container img {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+}
+.game-inner {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.selection-square {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ff4b4b;
+  background-color: transparent;
+  position: absolute;
+}
+.chars-list-container {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.chars-list-item {
+  color: #cbcbcb;
+  background-color: #333333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #ff4b4b;
+  pointer-events: all;
+  transition: 200ms ease-in-out;
+  cursor: pointer;
+}
+.chars-list-item:hover {
+  background-color: #ff4b4b;
+}
+.chars-list-item p {
+  pointer-events: none;
+  padding-left: 10px;
+  margin: auto;
+}
+
+.found {
+  pointer-events: none;
+  background-color: #ff4b4b;
+  text-decoration: line-through;
+  color: #333333;
+}
+
+.time-and-found-num {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.timer {
+  text-shadow: 0px 0px 10px #000000aa;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #ff4b4b;
+  font-size: 22px;
+  font-weight: bold;
+  width: 300px;
+}
+
+.found-number {
+  box-shadow: 0px 0px 10px #000000aa;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #cbcbcb;
+  color: #f73f3f;
+  width: 3rem;
+  height: 3rem;
+  pointer-events: none;
+}
+
+.found-number p {
+  margin: auto;
+  margin-top: auto;
+  font-size: 25px;
+  font-weight: bold;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
 }
 
 /*///////////////////////////Leaderboads page styles////////////////////////////////*/
