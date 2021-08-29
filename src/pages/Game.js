@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { findPercentage, findCoordinate } from '../helpers'
-import { timestamp } from '../firebase/config'
+import GameHeader from '../components/GameHeader'
 
 export default function Game({
   selectedLevel,
@@ -69,12 +69,7 @@ export default function Game({
   return (
     <>
       <div className="game-container">
-        <div className="time-and-found-num">
-          <p className="timer">Time:{time}s</p>
-          <div className="found-number">
-            <p>{foundCharacters.length}</p>
-          </div>
-        </div>
+        <GameHeader foundCharacters={foundCharacters} time={time} />
         <div className="game-inner">
           <img
             ref={image}
