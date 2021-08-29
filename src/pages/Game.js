@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { findPercentage, findCoordinate } from '../helpers'
+import { timestamp } from '../firebase/config'
 
 export default function Game({
   selectedLevel,
@@ -9,12 +10,11 @@ export default function Game({
 }) {
   const image = useRef(null)
   const [imageIsClicked, setImageIsClicked] = useState(false)
+
   const [currentXY, setCurrentXY] = useState(null)
-  const [foundCharacters, setFoundCharacters] = useState({
-    wally: false,
-    wilma: false,
-    wizard: false,
-  })
+  const [foundCharacters, setFoundCharacters] = useState([])
+
+  const [time, setTime] = useState(0)
 
   const handleClick = (e) => {
     setImageIsClicked((prev) => !prev)
@@ -44,13 +44,15 @@ export default function Game({
       currentXY.y < dataY + 20
 
     if (result) {
-      setFoundCharacters({ ...foundCharacters, [character]: true })
+      setFoundCharacters([...foundCharacters, character])
     }
-
-    console.log(result)
 
     setImageIsClicked(false)
   }
+
+  useEffect(() => {
+    if (foundCharacters.length < 3) setTimeout(() => setTime(time + 1), 1000)
+  }, [time])
 
   const listStyle = {
     left: currentXY && currentXY.x + 20,
@@ -65,40 +67,54 @@ export default function Game({
   }
 
   return (
-    <div className="game-container">
-      <div className="game-inner">
-        <img
-          ref={image}
-          onClick={handleClick}
-          src={selectedLevel.url}
-          alt="Game Board"
-        />
-        {imageIsClicked && (
-          <div style={listStyle} className="chars-list-container">
-            <div
-              onClick={() => handleSelection('wally')}
-              className="chars-list-item"
-            >
-              <p>Wally</p>
-            </div>
-            <div
-              onClick={() => handleSelection('wilma')}
-              className="chars-list-item"
-            >
-              <p>Wilma</p>
-            </div>
-            <div
-              onClick={() => handleSelection('wizard')}
-              className="chars-list-item"
-            >
-              <p>Wizard</p>
-            </div>
+    <>
+      <div className="game-container">
+        <div className="time-and-found-num">
+          <p className="timer">Time:{time}s</p>
+          <div className="found-number">
+            <p>{foundCharacters.length}</p>
           </div>
-        )}
-        {imageIsClicked && (
-          <div style={squareStyle} className="selection-square"></div>
-        )}
+        </div>
+        <div className="game-inner">
+          <img
+            ref={image}
+            onClick={handleClick}
+            src={selectedLevel.url}
+            alt="Game Board"
+          />
+          {imageIsClicked && (
+            <div style={listStyle} className="chars-list-container">
+              <div
+                onClick={() => handleSelection('wally')}
+                className={`chars-list-item ${
+                  foundCharacters.includes('wally') && 'found'
+                }`}
+              >
+                <p>Wally</p>
+              </div>
+              <div
+                onClick={() => handleSelection('wilma')}
+                className={`chars-list-item ${
+                  foundCharacters.includes('wilma') && 'found'
+                }`}
+              >
+                <p>Wilma</p>
+              </div>
+              <div
+                onClick={() => handleSelection('wizard')}
+                className={`chars-list-item ${
+                  foundCharacters.includes('wizard') && 'found'
+                }`}
+              >
+                <p>Wizard</p>
+              </div>
+            </div>
+          )}
+          {imageIsClicked && (
+            <div style={squareStyle} className="selection-square"></div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

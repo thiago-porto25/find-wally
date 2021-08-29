@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {!isGameRunning && <Header />}
       {isChoosingLevel && (
         <Choose
           setIsGameRunning={setIsGameRunning}
