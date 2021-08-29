@@ -292,6 +292,103 @@ footer p a:hover {
   text-align: center;
 }
 
+/*///////////////////////////selection message comp styles////////////////////////////////*/
+.selection-message {
+  pointer-events: none;
+  height: 40px;
+  font-size: 16px;
+  position: absolute;
+  top: 20px;
+  transition: opacity 500ms ease-in-out;
+  border-radius: 10px;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selection-message p {
+  padding: 0 10px 0 10px;
+}
+
+.correct {
+  width: 15rem;
+  transform: translateX(-7rem);
+  left: 50%;
+  background-color: lightgreen;
+  color: #183a09;
+}
+
+.incorrect {
+  width: 10rem;
+  transform: translateX(-4rem);
+  left: 50%;
+  background-color: lightcoral;
+  color: #3a0909;
+}
+
+/*///////////////////////////Winner Modal comp styles////////////////////////////////*/
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.493);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-inner {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px #000000;
+  border-radius: 10px;
+  z-index: 3;
+  background-color: #333;
+  color: #ff4b4b;
+  width: 250px;
+  width: fit-content;
+  padding: 20px;
+}
+
+.modal-inner h1 {
+  color: #cbcbcb;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.modal-inner h3 {
+  font-family: 'Press Start 2P', sans-serif;
+  margin-top: 0;
+}
+
+.modal-button {
+  border-radius: 10px;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 70%;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 200ms ease;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+.modal-button-choose:hover {
+  background-color: #f83737c5;
+}
+
+.modal-button-choose {
+  background-color: #f83737;
+  border: 1px solid #cbcbcbaa;
+  color: #cbcbcb;
+}
+
 /*///////////////////////////Leaderboads page styles////////////////////////////////*/
 
 /*///////////////////////////Different Screen Sizes///////////////////////////*/

@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { findPercentage, findCoordinate } from '../helpers'
 import GameHeader from '../components/GameHeader'
+import SelectionBox from '../components/SelectionBox'
+import SelectionMessage from '../components/SelectionMessage'
+import WinnerModal from '../components/WinnerModal'
 
 export default function Game({
   selectedLevel,
@@ -10,10 +13,14 @@ export default function Game({
 }) {
   const image = useRef(null)
   const [imageIsClicked, setImageIsClicked] = useState(false)
-
   const [currentXY, setCurrentXY] = useState(null)
-  const [foundCharacters, setFoundCharacters] = useState([])
 
+  const [selectionMsgInfo, setSelectionMsgInfo] = useState({
+    visible: false,
+    theme: false,
+  })
+
+  const [foundCharacters, setFoundCharacters] = useState([])
   const [time, setTime] = useState(0)
 
   const handleClick = (e) => {
@@ -45,7 +52,8 @@ export default function Game({
 
     if (result) {
       setFoundCharacters([...foundCharacters, character])
-    }
+      setSelectionMsgInfo({ visible: true, theme: true })
+    } else setSelectionMsgInfo({ visible: true, theme: false })
 
     setImageIsClicked(false)
   }
@@ -54,11 +62,13 @@ export default function Game({
     if (foundCharacters.length < 3) setTimeout(() => setTime(time + 1), 1000)
   }, [time])
 
-  const listStyle = {
-    left: currentXY && currentXY.x + 20,
-    top: currentXY && currentXY.y,
-    zIndex: 2,
-  }
+  useEffect(() => {
+    if (selectionMsgInfo.visible)
+      setTimeout(
+        () => setSelectionMsgInfo({ ...selectionMsgInfo, visible: false }),
+        1500
+      )
+  }, [selectionMsgInfo.visible])
 
   const squareStyle = {
     transform: 'translate(-10px, -10px)',
@@ -68,6 +78,15 @@ export default function Game({
 
   return (
     <>
+      {foundCharacters.length === 3 && (
+        <WinnerModal
+          selectedLevel={selectedLevel}
+          time={time}
+          setSelectedLevel={setSelectedLevel}
+          setIsGameRunning={setIsGameRunning}
+          setIsChoosingLevel={setIsChoosingLevel}
+        />
+      )}
       <div className="game-container">
         <GameHeader foundCharacters={foundCharacters} time={time} />
         <div className="game-inner">
@@ -78,36 +97,19 @@ export default function Game({
             alt="Game Board"
           />
           {imageIsClicked && (
-            <div style={listStyle} className="chars-list-container">
-              <div
-                onClick={() => handleSelection('wally')}
-                className={`chars-list-item ${
-                  foundCharacters.includes('wally') && 'found'
-                }`}
-              >
-                <p>Wally</p>
-              </div>
-              <div
-                onClick={() => handleSelection('wilma')}
-                className={`chars-list-item ${
-                  foundCharacters.includes('wilma') && 'found'
-                }`}
-              >
-                <p>Wilma</p>
-              </div>
-              <div
-                onClick={() => handleSelection('wizard')}
-                className={`chars-list-item ${
-                  foundCharacters.includes('wizard') && 'found'
-                }`}
-              >
-                <p>Wizard</p>
-              </div>
-            </div>
+            <SelectionBox
+              handleSelection={handleSelection}
+              foundCharacters={foundCharacters}
+              currentXY={currentXY}
+            />
           )}
           {imageIsClicked && (
             <div style={squareStyle} className="selection-square"></div>
           )}
+          <SelectionMessage
+            theme={selectionMsgInfo.theme}
+            visible={selectionMsgInfo.visible}
+          />
         </div>
       </div>
     </>
