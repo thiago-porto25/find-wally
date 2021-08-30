@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react'
-import { findPercentage, findCoordinate } from '../helpers'
+import { findCoordinate } from '../helpers'
 import GameHeader from '../components/GameHeader'
 import SelectionBox from '../components/SelectionBox'
 import SelectionMessage from '../components/SelectionMessage'
