@@ -1,4 +1,7 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react'
+import { userContext } from '../context/userContext'
+import { firestore } from '../firebase/config'
 
 export default function WinnerModal({
   time,
@@ -7,17 +10,80 @@ export default function WinnerModal({
   setIsGameRunning,
   setIsChoosingLevel,
 }) {
-  const handleClick = () => {
-    // use selectedLevel to know which level is being played to save time
-    // if user not logged save directly to leaderboard with name anonymous
-    // do firebase stuff to see check if its the players best time if logged in
-    // if is players first time record it as best on user and leaderboard
-    // if new best time record it on user and on leaderboard
-    // if not best time do nothing
+  const { user, setUser } = useContext(userContext)
 
+  useEffect(() => {
+    const levelName = `bestTimeLvl${selectedLevel.id}`
+
+    const handleSave = async () => {
+      if (user) {
+        if (time < user[levelName]) {
+          updateTimeInFirestore(selectedLevel.id)
+
+          if (user[levelName] === null) {
+            addTimeToLeaderboards(selectedLevel.id, user.displayName)
+          } else {
+            updateLeaderboards(selectedLevel.id, user.uid)
+          }
+        } else return
+      }
+      if (!user) {
+        console.log('no user. Saving directly to leaderboard')
+        addTimeToLeaderboards(selectedLevel.id)
+      }
+    }
+    handleSave()
+  }, [])
+
+  const handleClick = () => {
     setIsGameRunning(false)
     setIsChoosingLevel(true)
     setSelectedLevel(null)
+  }
+
+  const updateTimeInFirestore = async (level) => {
+    try {
+      await firestore
+        .collection('users')
+        .doc(user.uid)
+        .update({ [`bestTimeLvl${level}`]: time })
+      setUser({ ...user, [`bestTimeLvl${level}`]: time })
+      console.log('record saved')
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
+  const updateLeaderboards = async (level, uid) => {
+    try {
+      let docId
+
+      const snapshot = await firestore
+        .collection(`leaderboardsLvl${level}`)
+        .where('uid', '==', uid)
+        .get()
+
+      snapshot.forEach((doc) => {
+        docId = doc.id
+      })
+
+      firestore
+        .collection(`leaderboardsLvl${level}`)
+        .doc(docId)
+        .update({ time })
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
+  const addTimeToLeaderboards = (level, name = 'anonymous') => {
+    try {
+      firestore
+        .collection(`leaderboardsLvl${level}`)
+        .add({ displayName: name, uid: user ? user.uid : null, time })
+    } catch (e) {
+      console.log(e.message)
+    }
   }
 
   return (

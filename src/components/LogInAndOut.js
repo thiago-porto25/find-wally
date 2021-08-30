@@ -15,11 +15,11 @@ export default function LogInAndOut() {
         displayName: authent.currentUser.displayName,
         photoUrl: authent.currentUser.photoURL,
         uid: authent.currentUser.uid,
-        bestTime: 0,
+        bestTimeLvl1: null,
+        bestTimeLvl2: null,
       }
       await addNewUser(userInfo)
-      const { docId } = await getUser(authent.currentUser)
-      setUser({ docId, ...userInfo })
+      setUser(userInfo)
     } else {
       setUser(userData)
     }
@@ -38,9 +38,7 @@ export default function LogInAndOut() {
       .where('uid', '==', currentUser.uid)
       .get()
       .then((querySnapshot) => {
-        querySnapshot.forEach(
-          (doc) => (data = { docId: doc.id, ...doc.data() })
-        )
+        querySnapshot.forEach((doc) => (data = { ...doc.data() }))
       })
       .catch((error) => console.log(`Error catching documents: ${error}`))
 
@@ -48,7 +46,7 @@ export default function LogInAndOut() {
   }
 
   const addNewUser = async (userInfo) => {
-    firestore.collection('users').add(userInfo)
+    firestore.collection('users').doc(authent.currentUser.uid).set(userInfo)
   }
 
   return (
