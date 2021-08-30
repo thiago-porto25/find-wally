@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import LevelCard from '../components/LevelCard'
 
 export default function Choose({ levels, ...props }) {
