@@ -17,8 +17,8 @@ export default function WinnerModal({
 
     const handleSave = async () => {
       if (user) {
-        if (time < user[levelName]) {
-          updateTimeInFirestore(selectedLevel.id)
+        if (user[levelName] === null || user[levelName] > time) {
+          await updateTimeInFirestore(selectedLevel.id)
 
           if (user[levelName] === null) {
             addTimeToLeaderboards(selectedLevel.id, user.displayName)
