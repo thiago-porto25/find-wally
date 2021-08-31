@@ -9,7 +9,9 @@ export default function LeaderboardsItem({ data }) {
       nameArr.push(item[0].toUpperCase() + item.slice(1))
     })
 
-    return nameArr.join(' ')
+    return name.length <= 13
+      ? nameArr.join(' ')
+      : nameArr.join(' ').split('').slice(0, 12).join('') + '...'
   }
 
   return data ? (
@@ -30,7 +32,7 @@ export default function LeaderboardsItem({ data }) {
         <p>{handleName(data.displayName)}</p>
       </div>
       <div className="ranking-time">
-        <p>{data.time} seconds</p>
+        <p>{data.time}s</p>
       </div>
     </div>
   ) : null

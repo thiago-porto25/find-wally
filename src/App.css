@@ -529,9 +529,23 @@ footer p a:hover {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .choose-container {
     width: 100%;
+  }
+  .leaderboards-title {
+    font-size: 35px;
+  }
+  .ranking-label * {
+    font-size: 16px;
+  }
+  .ranking-item * {
+    font-size: 15px;
+  }
+  .ranking-name {
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -549,5 +563,8 @@ footer p a:hover {
   }
   footer p {
     font-size: 14px;
+  }
+  .leaderboards-title {
+    font-size: 28px;
   }
 }
