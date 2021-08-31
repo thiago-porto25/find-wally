@@ -184,8 +184,8 @@ footer p a:hover {
   pointer-events: none;
   height: 40px;
   font-size: 16px;
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 40px;
   transition: opacity 500ms ease-in-out;
   border-radius: 10px;
   color: #333333;
