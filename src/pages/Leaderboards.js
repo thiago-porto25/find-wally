@@ -58,7 +58,7 @@ export default function Leaderboards({
         className="leaderboards-home-button"
         onClick={handleClickToChoose}
       >
-        Go home
+        Go Home
       </button>
     </div>
   )

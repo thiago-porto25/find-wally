@@ -96,7 +96,7 @@ export default function WinnerModal({
           onClick={handleClick}
           className="modal-button modal-button-choose"
         >
-          New game
+          Go Home
         </button>
       </div>
     </div>
