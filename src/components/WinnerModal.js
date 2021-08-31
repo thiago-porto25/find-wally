@@ -12,29 +12,6 @@ export default function WinnerModal({
 }) {
   const { user, setUser } = useContext(userContext)
 
-  useEffect(() => {
-    const levelName = `bestTimeLvl${selectedLevel.id}`
-
-    const handleSave = async () => {
-      if (user) {
-        if (user[levelName] === null || user[levelName] > time) {
-          await updateTimeInFirestore(selectedLevel.id)
-
-          if (user[levelName] === null) {
-            addTimeToLeaderboards(selectedLevel.id, user.displayName)
-          } else {
-            updateLeaderboards(selectedLevel.id, user.uid)
-          }
-        } else return
-      }
-      if (!user) {
-        console.log('no user. Saving directly to leaderboard')
-        addTimeToLeaderboards(selectedLevel.id)
-      }
-    }
-    handleSave()
-  }, [])
-
   const handleClick = () => {
     setIsGameRunning(false)
     setIsChoosingLevel(true)
@@ -85,6 +62,29 @@ export default function WinnerModal({
       console.log(e.message)
     }
   }
+
+  useEffect(() => {
+    const levelName = `bestTimeLvl${selectedLevel.id}`
+
+    const handleSave = async () => {
+      if (user) {
+        if (user[levelName] === null || user[levelName] > time) {
+          await updateTimeInFirestore(selectedLevel.id)
+
+          if (user[levelName] === null) {
+            addTimeToLeaderboards(selectedLevel.id, user.displayName)
+          } else {
+            updateLeaderboards(selectedLevel.id, user.uid)
+          }
+        } else return
+      }
+      if (!user) {
+        console.log('no user. Saving directly to leaderboard')
+        addTimeToLeaderboards(selectedLevel.id)
+      }
+    }
+    handleSave()
+  }, [])
 
   return (
     <div className="modal">
