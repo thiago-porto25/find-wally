@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-/*///////////////////////////LogInAndOut comp styles///////////////////////////*/
+/*/ //////////////////////////LogInAndOut comp styles///////////////////////////*/
 .log-container {
   width: 140px;
   margin-right: 20px;
@@ -100,7 +100,7 @@
   margin-right: 10px;
 }
 
-/*///////////////////////////Footer comp styles///////////////////////////*/
+/*/ //////////////////////////Footer comp styles///////////////////////////*/
 footer {
   margin-top: auto;
   margin-left: auto;
@@ -180,7 +180,7 @@ footer p a:hover {
   border: 1px solid #333333aa;
 }
 
-/*///////////////////////////selection message comp styles////////////////////////////////*/
+/*/ //////////////////////////selection message comp styles////////////////////////////////*/
 .selection-message {
   pointer-events: none;
   height: 40px;
@@ -277,7 +277,7 @@ footer p a:hover {
   color: #cbcbcb;
 }
 
-/*///////////////////////////LeaderboardsItem comp styles///////////////////////////*/
+/*/ //////////////////////////LeaderboardsItem comp styles///////////////////////////*/
 .ranking-item {
   display: flex;
   background-color: #cbcbcb;
@@ -374,7 +374,7 @@ footer p a:hover {
   margin-bottom: 20px !important;
 }
 
-/*///////////////////////////Choose page styles///////////////////////////*/
+/*/ //////////////////////////Choose page styles///////////////////////////*/
 .choose-container {
   margin: auto;
   max-width: 900px;
@@ -505,7 +505,7 @@ footer p a:hover {
   text-align: center;
 }
 
-/*///////////////////////////Different Screen Sizes///////////////////////////*/
+/*/ //////////////////////////Different Screen Sizes///////////////////////////*/
 @media (max-width: 750px) {
   .header-container {
     flex-direction: column;
@@ -532,5 +532,22 @@ footer p a:hover {
 @media (max-width: 400px) {
   .choose-container {
     width: 100%;
+  }
+}
+
+@media (max-width: 350px) {
+  .header-container header {
+    font-size: 32px;
+  }
+  .header-container header img {
+    width: 42px;
+    height: 50px;
+  }
+  .card-container {
+    width: 250px;
+    height: 380px;
+  }
+  footer p {
+    font-size: 14px;
   }
 }
