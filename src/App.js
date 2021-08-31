@@ -21,7 +21,12 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
-        {!isGameRunning && <Header />}
+        {!isGameRunning && (
+          <Header
+            setIsOnLeaderboard={setIsOnLeaderboard}
+            setIsChoosingLevel={setIsChoosingLevel}
+          />
+        )}
         {isChoosingLevel && (
           <Choose
             setIsGameRunning={setIsGameRunning}

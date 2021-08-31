@@ -60,6 +60,7 @@
 
 .header-container header,
 .game-header-logo {
+  cursor: pointer;
   padding-top: 0.5rem;
   margin: auto;
   padding-left: 7rem;
@@ -275,6 +276,98 @@ footer p a:hover {
   color: #cbcbcb;
 }
 
+/*///////////////////////////LeaderboardsItem comp styles///////////////////////////*/
+.ranking-item {
+  display: flex;
+  background-color: #cbcbcb;
+  box-shadow: 0 0 10px black;
+  height: 3rem;
+  color: black;
+  text-align: center;
+}
+
+.ranking-item *,
+.ranking-label * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ranking-position,
+.default-position {
+  font-weight: bold;
+  width: 33.3%;
+}
+
+.ranking-time,
+.default-time {
+  width: 33.3%;
+}
+
+.ranking-name,
+.default-name {
+  width: 33.3%;
+}
+
+/*///////////////////////////Leaderboads page styles////////////////////////////////*/
+.leaderboards-container {
+  max-width: 900px;
+  width: 80%;
+  height: fit-content;
+  margin: auto;
+  margin-top: 0;
+}
+
+.leaderboards-title {
+  color: #f83737;
+  text-shadow: 5px 5px 10px #000000aa;
+  text-align: center;
+  font-size: 42px;
+  pointer-events: none;
+}
+
+.leaderboards-title hr {
+  margin-top: 5px;
+  width: 12rem;
+  color: #cbcbcb;
+}
+
+.level-section {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 50px;
+}
+
+.level-section header {
+  pointer-events: none;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-decoration: underline;
+  text-shadow: 5px 5px 10px black;
+}
+
+.ranking-grid {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+.ranking-label {
+  pointer-events: none;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  background-color: #f83737;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  height: 3rem;
+}
+
 /*///////////////////////////Choose page styles///////////////////////////*/
 .choose-container {
   margin: auto;
@@ -294,7 +387,8 @@ footer p a:hover {
   width: 100%;
 }
 
-.button-section button {
+.button-section button,
+.leaderboards-home-button {
   display: block;
   margin: auto;
   cursor: pointer;
@@ -309,7 +403,8 @@ footer p a:hover {
   transition: 300ms ease;
 }
 
-.button-section button:hover {
+.button-section button:hover,
+.leaderboards-home-button:hover {
   color: #f83737;
   background-color: #cbcbcb;
   border: 1px solid #f83737c5;
@@ -403,8 +498,6 @@ footer p a:hover {
   height: fit-content;
   text-align: center;
 }
-
-/*///////////////////////////Leaderboads page styles////////////////////////////////*/
 
 /*///////////////////////////Different Screen Sizes///////////////////////////*/
 @media (max-width: 750px) {

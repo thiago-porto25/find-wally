@@ -15,14 +15,12 @@ export default function Game({
   const image = useRef(null)
   const [imageIsClicked, setImageIsClicked] = useState(false)
   const [currentXY, setCurrentXY] = useState(null)
-
+  const [foundCharacters, setFoundCharacters] = useState([])
+  const [time, setTime] = useState(0)
   const [selectionMsgInfo, setSelectionMsgInfo] = useState({
     visible: false,
     theme: false,
   })
-
-  const [foundCharacters, setFoundCharacters] = useState([])
-  const [time, setTime] = useState(0)
 
   const handleClick = (e) => {
     setImageIsClicked((prev) => !prev)
