@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLeaderboards } from '../hooks/useLeaderboards'
 import LeaderboardsItem from '../components/LeaderboardsItem'
+import Skeleton from 'react-loading-skeleton'
 
 export default function Leaderboards({
   setIsChoosingLevel,
@@ -32,13 +33,16 @@ export default function Leaderboards({
         <header>Easy Level</header>
         <div className="ranking-grid">
           {DefaultRankingItem}
-          {dataLvl1 &&
+          {dataLvl1 ? (
             dataLvl1.map((item, i) => (
               <LeaderboardsItem
                 key={`${item.displayName}-${i}-lvl1`}
                 data={{ ranking: i + 1, ...item }}
               />
-            ))}
+            ))
+          ) : (
+            <Skeleton count={1} height={150} />
+          )}
         </div>
       </div>
       <div className="level-section">

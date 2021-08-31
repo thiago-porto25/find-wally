@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { userContext as UserContext } from './context/userContext'
+import { SkeletonTheme } from 'react-loading-skeleton'
 import './App.css'
 import Header from './components/Header'
 import Game from './pages/Game'
@@ -19,40 +20,42 @@ function App() {
   const [user, setUser] = useState(null)
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div className="App">
-        {!isGameRunning && (
-          <Header
-            setIsOnLeaderboard={setIsOnLeaderboard}
-            setIsChoosingLevel={setIsChoosingLevel}
-          />
-        )}
-        {isChoosingLevel && (
-          <Choose
-            setIsGameRunning={setIsGameRunning}
-            setIsOnLeaderboard={setIsOnLeaderboard}
-            setIsChoosingLevel={setIsChoosingLevel}
-            setSelectedLevel={setSelectedLevel}
-            levels={levels}
-          />
-        )}
-        {isOnLeaderboard && (
-          <Leaderboards
-            setIsOnLeaderboard={setIsOnLeaderboard}
-            setIsChoosingLevel={setIsChoosingLevel}
-          />
-        )}
-        {isGameRunning && (
-          <Game
-            setIsGameRunning={setIsGameRunning}
-            setIsChoosingLevel={setIsChoosingLevel}
-            setSelectedLevel={setSelectedLevel}
-            selectedLevel={selectedLevel}
-          />
-        )}
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <SkeletonTheme color="#999" highlightColor="#cbcbcb">
+      <UserContext.Provider value={{ user, setUser }}>
+        <div className="App">
+          {!isGameRunning && (
+            <Header
+              setIsOnLeaderboard={setIsOnLeaderboard}
+              setIsChoosingLevel={setIsChoosingLevel}
+            />
+          )}
+          {isChoosingLevel && (
+            <Choose
+              setIsGameRunning={setIsGameRunning}
+              setIsOnLeaderboard={setIsOnLeaderboard}
+              setIsChoosingLevel={setIsChoosingLevel}
+              setSelectedLevel={setSelectedLevel}
+              levels={levels}
+            />
+          )}
+          {isOnLeaderboard && (
+            <Leaderboards
+              setIsOnLeaderboard={setIsOnLeaderboard}
+              setIsChoosingLevel={setIsChoosingLevel}
+            />
+          )}
+          {isGameRunning && (
+            <Game
+              setIsGameRunning={setIsGameRunning}
+              setIsChoosingLevel={setIsChoosingLevel}
+              setSelectedLevel={setSelectedLevel}
+              selectedLevel={selectedLevel}
+            />
+          )}
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </SkeletonTheme>
   )
 }
 

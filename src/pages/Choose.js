@@ -1,4 +1,5 @@
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
 import LevelCard from '../components/LevelCard'
 
 export default function Choose({ levels, ...props }) {
@@ -10,6 +11,12 @@ export default function Choose({ levels, ...props }) {
   return (
     <div className="choose-container">
       <section className="cards-section">
+        {!levels[0] && (
+          <>
+            <Skeleton count={1} width={300} height={350} />
+            <Skeleton count={1} width={300} height={350} />
+          </>
+        )}
         {levels &&
           levels.map((level) => (
             <LevelCard key={level.id} level={level} {...props} />
