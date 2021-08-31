@@ -564,6 +564,9 @@ footer p a:hover {
   footer p {
     font-size: 14px;
   }
+  .leaderboards-container {
+    width: 100%;
+  }
   .leaderboards-title {
     font-size: 28px;
   }
