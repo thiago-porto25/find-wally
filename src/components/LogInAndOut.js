@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { userContext } from '../context/userContext'
 import { firestore, auth as authent, firebase } from '../firebase/config'
+import { motion } from 'framer-motion'
 
 export default function LogInAndOut() {
   const { user, setUser } = useContext(userContext)
@@ -52,12 +53,23 @@ export default function LogInAndOut() {
   return (
     <div className="log-container">
       {!user && (
-        <button onClick={signInWithGoogle} className="log-button in">
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0 }}
+          onClick={signInWithGoogle}
+          className="log-button in"
+        >
           Log in
-        </button>
+        </motion.button>
       )}
       {user && (
-        <>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0 }}
+          className="logged-in-container"
+        >
           <img
             className="profile-picture"
             src={user?.photoUrl}
@@ -66,7 +78,7 @@ export default function LogInAndOut() {
           <button onClick={signOut} className="log-button out">
             Log out
           </button>
-        </>
+        </motion.div>
       )}
     </div>
   )

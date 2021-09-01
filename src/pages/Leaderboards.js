@@ -2,6 +2,7 @@ import React from 'react'
 import { useLeaderboards } from '../hooks/useLeaderboards'
 import LeaderboardsItem from '../components/LeaderboardsItem'
 import Skeleton from 'react-loading-skeleton'
+import { motion } from 'framer-motion'
 
 export default function Leaderboards({
   setIsChoosingLevel,
@@ -31,7 +32,7 @@ export default function Leaderboards({
       </h1>
       <div className="level-section">
         <header>Easy Level</header>
-        <div className="ranking-grid">
+        <motion.div layout className="ranking-grid">
           {DefaultRankingItem}
           {dataLvl1 ? (
             dataLvl1.map((item, i) => (
@@ -41,22 +42,25 @@ export default function Leaderboards({
               />
             ))
           ) : (
-            <Skeleton count={1} height={150} />
+            <Skeleton count={1} height={50} />
           )}
-        </div>
+        </motion.div>
       </div>
       <div className="level-section">
         <header>Hard Level</header>
-        <div className="ranking-grid">
+        <motion.div layout className="ranking-grid">
           {DefaultRankingItem}
-          {dataLvl2 &&
+          {dataLvl2 ? (
             dataLvl2.map((item, i) => (
               <LeaderboardsItem
                 key={`${item.displayName}-${i}-lvl2`}
                 data={{ ranking: i + 1, ...item }}
               />
-            ))}
-        </div>
+            ))
+          ) : (
+            <Skeleton count={1} height={50} />
+          )}
+        </motion.div>
       </div>
       <button
         className="leaderboards-home-button"

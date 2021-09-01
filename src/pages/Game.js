@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { findCoordinate } from '../helpers'
 import GameHeader from '../components/GameHeader'
 import SelectionBox from '../components/SelectionBox'
@@ -86,7 +87,12 @@ export default function Game({
           setIsChoosingLevel={setIsChoosingLevel}
         />
       )}
-      <div className="game-container">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+        className="game-container"
+      >
         <GameHeader foundCharacters={foundCharacters} time={time} />
         <div className="game-inner">
           <img
@@ -103,14 +109,20 @@ export default function Game({
             />
           )}
           {imageIsClicked && (
-            <div style={squareStyle} className="selection-square"></div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0 }}
+              style={squareStyle}
+              className="selection-square"
+            ></motion.div>
           )}
           <SelectionMessage
             theme={selectionMsgInfo.theme}
             visible={selectionMsgInfo.visible}
           />
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }

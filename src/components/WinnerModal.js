@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from 'react'
 import { userContext } from '../context/userContext'
 import { firestore } from '../firebase/config'
+import { motion } from 'framer-motion'
 
 export default function WinnerModal({
   time,
@@ -87,7 +88,12 @@ export default function WinnerModal({
   }, [])
 
   return (
-    <div className="modal">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0 }}
+      className="modal"
+    >
       <div className="modal-inner">
         <h1>Congratulations!</h1>
         <p>You've completed the level in</p>
@@ -99,6 +105,6 @@ export default function WinnerModal({
           Go Home
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }

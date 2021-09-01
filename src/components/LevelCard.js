@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 export default function LevelCard({
   level,
@@ -12,11 +13,16 @@ export default function LevelCard({
     setSelectedLevel(level)
   }
   return (
-    <div className="card-container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0 }}
+      className="card-container"
+    >
       <img src={level.url} alt={`preview of level ${level.id}`} />
       <h3>{level.mode}</h3>
       <p>{level.description}</p>
       <button onClick={handleClick}>Choose Level</button>
-    </div>
+    </motion.div>
   )
 }

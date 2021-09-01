@@ -18,6 +18,13 @@
   justify-content: center;
 }
 
+.logged-in-container {
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  margin-top: inherit;
+}
+
 .log-button {
   cursor: pointer;
   height: 2.3rem;

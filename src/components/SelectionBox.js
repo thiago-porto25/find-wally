@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 export default function SelectionBox({
   handleSelection,
@@ -12,7 +13,13 @@ export default function SelectionBox({
   }
 
   return (
-    <div style={listStyle} className="chars-list-container">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0 }}
+      style={listStyle}
+      className="chars-list-container"
+    >
       <div
         onClick={() => handleSelection('wally')}
         className={`chars-list-item ${
@@ -37,6 +44,6 @@ export default function SelectionBox({
       >
         <p>Wizard</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
