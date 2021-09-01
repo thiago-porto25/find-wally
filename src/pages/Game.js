@@ -13,11 +13,14 @@ export default function Game({
   setIsGameRunning,
   setIsChoosingLevel,
 }) {
+  const [time, setTime] = useState(0)
+  const [intervalId, setIntervalId] = useState('')
+
   const image = useRef(null)
   const [imageIsClicked, setImageIsClicked] = useState(false)
+
   const [currentXY, setCurrentXY] = useState(null)
   const [foundCharacters, setFoundCharacters] = useState([])
-  const [time, setTime] = useState(0)
   const [selectionMsgInfo, setSelectionMsgInfo] = useState({
     visible: false,
     theme: false,
@@ -59,10 +62,22 @@ export default function Game({
   }
 
   useEffect(() => {
-    if (foundCharacters.length < 3) setTimeout(() => setTime(time + 1), 1000)
-  }, [time])
+    //setting up the interval//
+    let intervalTime = 0
+    const interval = setInterval(() => {
+      setTime(intervalTime + 1)
+      ++intervalTime
+    }, 1000)
+    setIntervalId(interval)
+  }, [])
 
   useEffect(() => {
+    //removing the interval when the condition is met//
+    if (foundCharacters.length >= 3) clearInterval(intervalId)
+  }, [foundCharacters])
+
+  useEffect(() => {
+    //handling the message if the characters selected is correct or not//
     if (selectionMsgInfo.visible)
       setTimeout(
         () => setSelectionMsgInfo({ ...selectionMsgInfo, visible: false }),
