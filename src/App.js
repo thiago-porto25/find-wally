@@ -52,7 +52,7 @@ function App() {
               selectedLevel={selectedLevel}
             />
           )}
-          <Footer />
+          <Footer isGameRunning={isGameRunning} />
         </div>
       </UserContext.Provider>
     </SkeletonTheme>
