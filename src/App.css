@@ -550,13 +550,14 @@ footer p a:hover {
   }
 
   footer p {
-    width: 90%;
     display: block;
     word-wrap: break-word;
     font-size: 17px;
+    text-align: center;
   }
 
   .mobile-message {
+    width: 90%;
     display: block;
     text-align: justify;
     color: #f83737;
@@ -584,6 +585,10 @@ footer p a:hover {
   .timer {
     font-size: 18px;
     width: fit-content;
+  }
+
+  footer p {
+    font-size: 15px;
   }
 }
 
