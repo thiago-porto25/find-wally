@@ -110,6 +110,9 @@ footer {
 footer p {
   font-size: 18px;
   pointer-events: none;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 footer p a {
@@ -122,6 +125,10 @@ footer p a {
 footer p a:hover {
   text-decoration: underline;
   color: #ff4b4b;
+}
+
+.mobile-message {
+  display: none;
 }
 
 /*///////////////////////////LevelCard comp styles///////////////////////////*/
@@ -527,6 +534,26 @@ footer p a:hover {
     grid-template-rows: 1fr 1fr;
     gap: 30px;
   }
+  .time-and-found-num {
+    height: 5rem;
+  }
+
+  .time-and-found-num header {
+    display: none;
+  }
+
+  footer p {
+    width: 90%;
+    display: block;
+    word-wrap: break-word;
+    font-size: 17px;
+  }
+
+  .mobile-message {
+    display: block;
+    text-align: justify;
+    color: #f83737;
+  }
 }
 
 @media (max-width: 500px) {
@@ -546,6 +573,10 @@ footer p a:hover {
     height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .timer {
+    font-size: 18px;
+    width: fit-content;
   }
 }
 
