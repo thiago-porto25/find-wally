@@ -141,17 +141,21 @@ footer p a:hover {
 /*///////////////////////////LevelCard comp styles///////////////////////////*/
 .card-container {
   width: 300px;
-  height: 350px;
-  background-color: #f73f3f;
+  height: 380px;
   border-radius: 10px;
-  border: 1.8px solid #cbcbcbaa;
   box-shadow: 0px 0px 10px #000000aa;
   transition: 200ms ease-in-out;
+  cursor: pointer;
+  color: #f73f3f;
+  background-color: #cbcbcb;
+  border: 1.8px solid #f73f3faa;
 }
 
 .card-container:hover {
-  background-color: #f83737;
+  border: 1.8px solid #cbcbcbaa;
+  background-color: #f73f3f;
   box-shadow: 0px 0px 10px #000000;
+  color: #cbcbcb;
 }
 
 .card-container img {
@@ -171,27 +175,21 @@ footer p a:hover {
 .card-container p {
   pointer-events: none;
   padding: 0 15px 0 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.card-container button {
-  display: block;
+.characters-container {
+  height: fit-content;
+  width: fit-content;
   margin: auto;
-  cursor: pointer;
-  background-color: #333333;
-  border: 1px solid #cbcbcbaa;
-  box-shadow: 0 0 5px #000000aa;
-  color: #cbcbcb;
-  font-size: 20px;
-  font-weight: bold;
-  transition: 200ms ease;
-  width: 10rem;
-  height: 2.5rem;
 }
 
-.card-container button:hover {
-  background-color: #cbcbcb;
-  color: #333333;
-  border: 1px solid #333333aa;
+.characters-container img {
+  height: 100px;
+  width: auto;
+  object-fit: cover;
+  margin: 0;
 }
 
 /*/ //////////////////////////selection message comp styles////////////////////////////////*/
@@ -384,31 +382,6 @@ footer p a:hover {
 }
 
 .leaderboards-home-button {
-  margin-top: 40px !important;
-  margin-bottom: 20px !important;
-}
-
-/*/ //////////////////////////Choose page styles///////////////////////////*/
-.choose-container {
-  margin: auto;
-  max-width: 900px;
-  width: 85%;
-}
-
-.cards-section {
-  padding: 40px 0 0 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-}
-
-.button-section {
-  padding: 30px 0 10px 0;
-  width: 100%;
-}
-
-.button-section button,
-.leaderboards-home-button {
   display: block;
   margin: auto;
   cursor: pointer;
@@ -421,13 +394,52 @@ footer p a:hover {
   font-size: 25px;
   font-weight: bold;
   transition: 300ms ease;
+  margin-top: 40px !important;
+  margin-bottom: 20px !important;
 }
 
-.button-section button:hover,
 .leaderboards-home-button:hover {
   color: #f83737;
   background-color: #cbcbcb;
   border: 1px solid #f83737c5;
+}
+
+/*/ //////////////////////////Choose page styles///////////////////////////*/
+.choose-container {
+  margin: auto;
+  max-width: 900px;
+  width: 85%;
+}
+
+.cards-section {
+  padding: 20px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.button-section {
+  padding: 30px 0 10px 0;
+  width: 100%;
+}
+
+.button-section button {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  background-color: #cbcbcb;
+  color: #f83737;
+  width: 50%;
+  height: 3rem;
+  min-width: 15rem;
+  font-size: 25px;
+  font-weight: bold;
+  transition: 300ms ease;
+}
+
+.button-section button:hover {
+  background-color: #f83737;
+  color: #cbcbcb;
 }
 
 /*///////////////////////////Game page styles///////////////////////////*/

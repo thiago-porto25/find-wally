@@ -21,12 +21,12 @@ export default function Choose({ levels, ...props }) {
             <Skeleton
               count={1}
               width={windowWidth > 330 ? 300 : 250}
-              height={windowWidth > 330 ? 350 : 380}
+              height={380}
             />
             <Skeleton
               count={1}
               width={windowWidth > 330 ? 300 : 250}
-              height={windowWidth > 330 ? 350 : 380}
+              height={380}
             />
           </>
         )}
